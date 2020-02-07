@@ -1,0 +1,62 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 금요일-2월-07-2020   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table MEMBER
+--------------------------------------------------------
+
+  CREATE TABLE "C##JAVA"."MEMBER" 
+   (	"NAME" VARCHAR2(30 BYTE), 
+	"ID" VARCHAR2(30 BYTE), 
+	"PWD" VARCHAR2(30 BYTE), 
+	"GENDER" VARCHAR2(3 BYTE), 
+	"EMAIL1" VARCHAR2(20 BYTE), 
+	"EMAIL2" VARCHAR2(20 BYTE), 
+	"TEL1" VARCHAR2(10 BYTE), 
+	"TEL2" VARCHAR2(10 BYTE), 
+	"TEL3" VARCHAR2(10 BYTE), 
+	"ZIPCODE" VARCHAR2(10 BYTE), 
+	"ADDR1" VARCHAR2(100 BYTE), 
+	"ADDR2" VARCHAR2(100 BYTE), 
+	"LOGTIME" DATE
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into C##JAVA.MEMBER
+SET DEFINE OFF;
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('박진수','jinsu1','123','1','1234123','gmail.com','010','1234','1234','06611','서울 서초구 강남대로 459','11번지',to_date('20/01/29','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('111','1111','111','0',null,null,'010',null,null,null,null,null,to_date('20/01/30','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('a','aaa','aa','0',null,null,'010',null,null,null,null,null,to_date('20/01/29','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('a','aaaa','aa','0',null,null,'010',null,null,null,null,null,to_date('20/01/29','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('김창렬','창렬','111','0',null,null,'010',null,null,null,null,null,to_date('20/02/03','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('금잔디','잔디12','222','0',null,null,'010',null,null,'4901','서울 광진구 중곡동  답십리로76길 ','123',to_date('20/02/04','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('머머리','머머리','111','0','murymury','gmail.com','016','8282','8282','6655','서울 서초구 서초동  서초대로 로얄프라자','232',to_date('20/02/07','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('test','test','2222','1','test','gmail.com','017','1233','1222','6174','서울 강남구 대치동  테헤란로 미래에셋타워','123',to_date('20/02/05','RR/MM/DD'));
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('홍길동','hong','111',null,null,null,null,null,null,null,null,null,null);
+Insert into C##JAVA.MEMBER (NAME,ID,PWD,GENDER,EMAIL1,EMAIL2,TEL1,TEL2,TEL3,ZIPCODE,ADDR1,ADDR2,LOGTIME) values ('안기모','앙기모띠','111','1','gimoti12','gmail.com','011','8882','8282','4902','서울 광진구 중곡동  답십리로 아띠자인','311',to_date('20/02/06','RR/MM/DD'));
+--------------------------------------------------------
+--  DDL for Index SYS_C007372
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "C##JAVA"."SYS_C007372" ON "C##JAVA"."MEMBER" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table MEMBER
+--------------------------------------------------------
+
+  ALTER TABLE "C##JAVA"."MEMBER" MODIFY ("NAME" NOT NULL ENABLE);
+  ALTER TABLE "C##JAVA"."MEMBER" MODIFY ("PWD" NOT NULL ENABLE);
+  ALTER TABLE "C##JAVA"."MEMBER" ADD PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
