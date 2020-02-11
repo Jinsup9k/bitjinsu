@@ -14,3 +14,11 @@ function isLogin(id, seq, pg) {
 	}
 
 }
+function checkBoardModifyForm() {
+	if (document.getElementById("subject").value == "") {
+		alert("제목을 입력하세요.");
+	} else if (document.getElementById("content").value == "") {
+		alert("내용을 입력하세요.");
+	} else
+		document.getElementById("boardModifyForm").submit();
+}

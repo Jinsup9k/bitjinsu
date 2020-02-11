@@ -23,6 +23,12 @@ boardPaging.setTotalA(totalA);
 
 boardPaging.makePagingHTML();
 
+//조회수 새로고침 방지
+if(session.getAttribute("memId")!=null){
+	Cookie cookie = new Cookie("memId","0");
+	cookie.setMaxAge(30*60);
+}
+
 %>
 <!DOCTYPE html>
 <html>

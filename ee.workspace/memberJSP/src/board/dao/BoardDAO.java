@@ -19,26 +19,26 @@ public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+
 	private DataSource ds;
-	
+
 	public BoardDAO() {
 		Context ctx;
 		try {
 			ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");//Tomcat의 경우
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");// Tomcat의 경우
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void boardWrite(Map<String,String> map) {
-		String sql ="INSERT INTO board (seq,id,name,email,subject,content,ref)"
-					+" values(seq_board.nextval, ?, ?, ?, ?, ?, seq_board.nextval)";
-		
+
+	public void boardWrite(Map<String, String> map) {
+		String sql = "INSERT INTO board (seq,id,name,email,subject,content,ref)"
+				+ " values(seq_board.nextval, ?, ?, ?, ?, ?, seq_board.nextval)";
+
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, map.get("id"));
 			pstmt.setString(2, map.get("name"));
 			pstmt.setString(3, map.get("email"));
@@ -58,22 +58,21 @@ public class BoardDAO {
 			}
 		}
 	}
-	public List<BoardDTO> boardList(int startNumber,int endNumber){
+
+	public List<BoardDTO> boardList(int startNumber, int endNumber) {
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql ="select * from "
-					+ "(select rownum rn, tt.* from"
-					+ "(select * from board order by ref desc)tt)"
-					+ " where rn>=? and rn<=?";
-		
+		String sql = "select * from " + "(select rownum rn, tt.* from" + "(select * from board order by ref desc)tt)"
+				+ " where rn>=? and rn<=?";
+
 		try {
 			conn = ds.getConnection();
-			pstmt =conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startNumber);
 			pstmt.setInt(2, endNumber);
-			
-			rs= pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
 				BoardDTO boardDTO = new BoardDTO();
 				boardDTO.setSeq(rs.getInt("seq"));
 				boardDTO.setId(rs.getString("id"));
@@ -102,20 +101,21 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return list;
 	}
+
 	public BoardDTO getBoard(int seq) {
-		BoardDTO boardDTO= null;
+		BoardDTO boardDTO = null;
 		String sql = "SELECT * FROM board WHERE seq = ?";
-		
+
 		try {
 			conn = ds.getConnection();
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, seq);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				boardDTO = new BoardDTO();
 				boardDTO.setSeq(rs.getInt("seq"));
 				boardDTO.setId(rs.getString("id"));
@@ -145,13 +145,14 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return boardDTO;
 	}
+
 	public int getBoardTotalA() {
 		String sql = "select count(*) from board";
 		int totalA = 0;
-		
+
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -174,6 +175,54 @@ public class BoardDAO {
 			}
 		}
 		return totalA;
-		
+
+	}
+
+	public void boardModify(Map<String, String> map) {
+		String sql = "update board set subject=?, content=?, logtime= sysdate where seq=?";
+
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, map.get("subject"));
+			pstmt.setString(2, map.get("content"));
+			pstmt.setInt(3, Integer.parseInt(map.get("seq")));
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void boardHit(int seq) {
+		String sql = "update board set hit= hit+1 where seq=?";
+
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, seq);
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
