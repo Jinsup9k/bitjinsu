@@ -21,8 +21,8 @@
 			<td align="center">${25/3 }</td>
 		</tr>
 		<tr>
-			<td align="center">\${25 div 3 }</td>
-			<td align="center">${25 div 3 }</td>
+			<%-- <td align="center">\${25 div 3 }</td>
+			<td align="center">${25 div 3 }</td> --%>
 		</tr>
 		<tr>
 			<td align="center">\${25%3 }</td>
@@ -38,8 +38,8 @@
 		</tr>
 		<tr>
 			<!--  > gt, < lt, >= ge, <= le, == eq, != ne -->
-			<td align="center">\${25 ne 3 }</td>
-			<td align="center">${25 ne 3 }</td>
+			<%-- <td align="center">\${25 ne 3 }</td>
+			<td align="center">${25 ne 3 }</td> --%>
 		</tr>
 		<tr>
 			<td align="center">\${header['host']}</td>

@@ -48,9 +48,11 @@
 	</c:forEach>
 	
 	<h3>** list2의 모든 데이터 출력 **</h3>
-	<c:forEach var="personDTO" items="${list2 }">
+	<c:forEach var="personDTO" items="${list2 }" varStatus="i">
 		<!-- 이름 = ${personDTO.getName() }&emsp; 나이 = ${personDTO.getAge() }<br> -->
 		이름 = ${personDTO.name }&emsp; 나이 = ${personDTO.age }<br>
+		i.index = ${i.index }&emsp; i.count = ${i.count }&emsp;<br>
+		<div class="abc${i.index }">${i.index }</div>
 	</c:forEach>
 </body>
 </html>
