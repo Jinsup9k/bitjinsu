@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../main/logo.jsp"/>
 <h3>로그인</h3>
 <form name="loginForm" method="post" action="../member/login.do">
 <table border="1" class="tb">

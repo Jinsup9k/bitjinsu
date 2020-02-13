@@ -20,7 +20,7 @@ function checkId(){
 	if(sId=="") 
 		alert("먼저 아이디를 입력하세요");
 	else
-		window.open("/mvcMember/member/checkId.do?id="+sId, "", "width=300 height=100 left=500 top=100");
+		window.open("checkId.do?id="+sId, "", "width=300 height=100 left=500 top=100");
 }
 
 function checkIdClose(id){
@@ -40,7 +40,7 @@ function checkLoginForm(){
 }
 
 function checkPost(){
-	window.open("/mvcMember/member/checkPost.do?","","width=400 height=400 scrollbars=yes");
+	window.open("checkPost.do","","width=400 height=400 scrollbars=yes");
 }
 
 function checkModifyForm(){

@@ -13,7 +13,8 @@
 </style>
 </head>
 <body>
-	<form name="writeForm" method="post" action="write.jsp">
+<jsp:include page="../main/logo.jsp"/>
+	<form name="writeForm" method="post" action="write.do">
 		<h2>회원가입</h2>
 		<table border="1" class="tb">
 			<tr>
@@ -79,7 +80,7 @@
 		</table>
 	</form>
 </body>
-<script type="text/javascript" src="../js/member.js?"></script>
+<script type="text/javascript" src="../js/member.js?ver=1"></script>
 </html>
 
 

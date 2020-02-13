@@ -32,7 +32,7 @@ public class CheckPostAction implements CommandProcess {
 		request.setAttribute("list", list);
 		
 		
-		return "/member/checkPost.jsp";
+		return "checkPost.jsp";
 	}
 
 }
