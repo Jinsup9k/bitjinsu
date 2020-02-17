@@ -7,7 +7,6 @@
   	<init-param>
   		<param-name>propertyConfig</param-name>
   		<param-value>/Volumes/D/bitjinsu/ee.workspace/miniProject/WebContent/WEB-INF/command.properties</param-value>
-  		<!--  <param-value>/</param-value>-->
   	</init-param>
   </servlet>
   <servlet-mapping>

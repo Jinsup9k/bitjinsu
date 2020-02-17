@@ -34,10 +34,11 @@ public class WriteAction implements CommandProcess {
 		
 		//응답
 		if(su == 1) {
-			return "/member/writeOk.jsp";
+			request.setAttribute("display", "/member/writeOk.jsp");
 		}else {
-			return "/member/writeFail.jsp";			
+			request.setAttribute("display", "/member/writeFail.jsp");
 		}
+		return "/main/index.jsp";
 		
 	}
 

@@ -42,7 +42,8 @@ public class ControlServlet extends HttpServlet {
       }
       System.out.println();
       
-      Iterator it = properties.keySet().iterator();
+      @SuppressWarnings("rawtypes")
+	Iterator it = properties.keySet().iterator();
       while(it.hasNext()) {
          String key = (String)it.next();
          System.out.println("key = "+key);

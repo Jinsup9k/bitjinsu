@@ -17,7 +17,8 @@ public class LogoutAction implements CommandProcess {
 		
 		session.invalidate();//무효화
 		
-		return "/member/logout.jsp";
+		request.setAttribute("display", "/member/logout.jsp");
+		return "/main/index.jsp";
 	}
 
 }
