@@ -9,7 +9,7 @@ public class ImageboardWriteFormAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		// TODO Auto-generated method stub
+		//request.setAttribute("display", "/imageboard/imageboardWriteForm.jsp");
 		return null;
 	}
 

@@ -1,6 +1,8 @@
 package board.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +31,12 @@ public class BoardListAction implements CommandProcess {
 		int endNum = pg*5;
 		int startNum = endNum-4;
 		
-		List<BoardDTO> list = boardDAO.boardList(startNum, endNum);
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("endNum",Integer.toString(endNum));
+		map.put("startNum",Integer.toString(startNum));
+		
+		List<BoardDTO> list = boardDAO.boardList(map);
 
 		//페이징 처리
 		BoardPaging boardPaging = new BoardPaging();

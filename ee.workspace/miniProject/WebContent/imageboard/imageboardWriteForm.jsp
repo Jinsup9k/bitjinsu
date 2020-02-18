@@ -59,17 +59,16 @@
 </body>
 <script type="text/javascript">
 function checkWriteForm(){
-if(document.imageboardWriteForm.name.value=="")
-	alert("이름을 입력하세요");
-else if(document.imageboardWriteForm.id.value=="")
-	alert("아이디를 입력하세요");
-else if(document.imageboardWriteForm.pwd.value=="")
-else if(document.getElementById("pwd").value=="")	
-	alert("비밀번호를 입력하세요");
-else if(document.imageboardWriteForm.pwd.value != document.writeForm.repwd.value)
-	alert("비밀번호가 맞지 않습니다");
-else if(document.imageboardWriteForm.id.value != document.writeForm.check.value)
-	alert("중복체크 하세요");
+if(document.imageboardWriteForm.imageId.value=="")
+	alert("상품코드를 입력하세요");
+else if(document.imageboardWriteForm.imageName.value=="")
+	alert("상품명을 입력하세요");
+else if(document.imageboardWriteForm.imagePrice.value=="")
+	alert("단가를 입력하세요");
+else if(document.imageboardWriteForm.imageQty.value=="")	
+	alert("갯수를 입력하세요");
+else if(document.imageboardWriteForm.imageContent.value=="")
+	alert("내용을 입력하세요");
 else
 	document.imageboardWriteForm.submit();
 }
