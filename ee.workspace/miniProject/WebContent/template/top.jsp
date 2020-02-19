@@ -18,5 +18,5 @@
 <c:if test="${sessionScope.memId ne null && memId eq '111' }">
 	<a href="../imageboard/imageboardWriteForm.do">이미지등록</a>&emsp;
 </c:if>
-	<a href="">이미지목록</a><br>
+	<a href="../imageboard/imageboardList.do?pg=1">이미지목록</a><br>
 </div>

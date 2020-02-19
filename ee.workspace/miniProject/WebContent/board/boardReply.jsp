@@ -4,7 +4,7 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("글작성 완료");
-	location.href='/board/boardList.do?pg=${pg}';
+	location.href='../board/boardList.do?pg=${pg}';
 }
 </script>
 

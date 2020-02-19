@@ -3,8 +3,8 @@
     
     
 <h2>답글쓰기</h2>
-<form name="boardWriteForm" method="post" action="boardWrite.do">
-<input type="hidden" name="pseq" value="${seq }">
+<form name="boardWriteForm" method="post" action="../board/boardReply.do">
+<input type="hidden" name="pseq" value="${pseq }">
 <input type="hidden" name="pg" value="${pg }">
 <table border="1">
 	<tr>
@@ -30,4 +30,4 @@
 </table>
 </form>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/board.js"></script>
+<script type="text/javascript" src="../js/board.js?ver=2"></script>

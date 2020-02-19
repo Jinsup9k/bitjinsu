@@ -7,7 +7,7 @@ $('#boardFormBtn').click(function(){
 						.css('color','red')
 						.css('font-size','8pt')
 						.css('font-weight','bold');
-	}else if('#content'.val()==''){
+	}else if($('#content').val()==''){
 		$('#contentDiv').text('내용을 입력하세요')
 						.css('color','red')
 						.css('font-size','8pt')

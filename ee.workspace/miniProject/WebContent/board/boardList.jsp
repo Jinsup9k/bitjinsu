@@ -41,6 +41,14 @@
 			</td>
 			<td width="300">
 				<a href="javascript:isLogin('${memId }',${boardDTO.seq },${pg })" id="subjectA">
+					
+					<c:forEach var="i" begin="1" end="${boarDTO.lev }">
+						&emsp;
+					</c:forEach>
+					
+					<c:if test="${boardDTO.pseq != 0 } }">
+						<img src="../image/reply.gif">
+					</c:if>
 					${boardDTO.subject }
 				</a>
 			</td>

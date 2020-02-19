@@ -10,10 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
-import board.bean.BoardDTO;
-import board.bean.BoardPaging;
-import board.dao.BoardDAO;
 import imageboard.bean.ImageboardDTO;
+import imageboard.bean.ImageboardPaging;
 import imageboard.dao.ImageboardDAO;
 
 public class ImageboardListAction implements CommandProcess {
@@ -26,8 +24,8 @@ public class ImageboardListAction implements CommandProcess {
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		request.setAttribute("pg", pg);
 		//db
-		int endNum = pg*5;
-		int startNum = endNum-4;
+		int endNum = pg*3;
+		int startNum = endNum-2;
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("endNum",Integer.toString(endNum));
@@ -35,15 +33,16 @@ public class ImageboardListAction implements CommandProcess {
 		
 		ImageboardDAO imageboardDAO = ImageboardDAO.getInstance();
 		List<ImageboardDTO> list = imageboardDAO.imageboardList(map);
-		//페이징
-		BoardPaging boardPaging = new BoardPaging();
-		int totalA = imageboardDAO.getBoardTotalA(); //총글수
-		boardPaging.setCurrentPage(pg);
-		boardPaging.setPageBlock(3);
-		boardPaging.setPageSize(5);
-		boardPaging.setTotalA(totalA);
 		
-		StringBuffer paging = boardPaging.makePagingHTML();
+		//페이징
+		ImageboardPaging imageboardPaging = new ImageboardPaging();
+		int totalA = imageboardDAO.getBoardTotalA(); //총글수
+		imageboardPaging.setCurrentPage(pg);
+		imageboardPaging.setPageBlock(3);
+		imageboardPaging.setPageSize(5);
+		imageboardPaging.setTotalA(totalA);
+		
+		StringBuffer paging = imageboardPaging.makePagingHTML();
 		request.setAttribute("paging", paging);
 		
 		request.setAttribute("list", list);

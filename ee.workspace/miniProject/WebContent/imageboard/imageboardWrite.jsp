@@ -3,6 +3,6 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("글작성 완료");
-	location.href='../imageboard/ImageboardList.do?pg=1';
+	location.href='../imageboard/imageboardList.do?pg=1';
 }
 </script>

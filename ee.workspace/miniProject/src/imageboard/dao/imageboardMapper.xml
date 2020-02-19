@@ -20,4 +20,8 @@
 	<select id="getImageboardTotalA" resultType="int">
 		select count(*) from imageboard
 	</select>
+	
+	<select id="getImageboard" parameterType="int" resultType="imageboardDTO">
+		select * from imageboard where seq=#{seq}
+	</select>
 </mapper>

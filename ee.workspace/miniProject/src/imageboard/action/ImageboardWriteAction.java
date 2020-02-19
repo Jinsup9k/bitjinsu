@@ -16,7 +16,6 @@ public class ImageboardWriteAction implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//실제폴더
 		String realFolder = request.getServletContext().getRealPath("/storage");
-		System.out.println("실제폴더 = "+realFolder);
 		
 		//업로드
 		MultipartRequest multi = new MultipartRequest(request

@@ -21,7 +21,7 @@
 </style>
 
 <form name="loginForm" method="post" action="../member/login.do">
-<table border="1" class="tb">
+<table class="tb">
 	<tr>
 		<td class="td1">아이디</td>
 		<td style="width:180px">

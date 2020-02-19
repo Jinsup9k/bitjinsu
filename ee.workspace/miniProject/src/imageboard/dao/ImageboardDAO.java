@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import board.bean.BoardDTO;
 import imageboard.bean.ImageboardDTO;
 
 public class ImageboardDAO {
@@ -64,5 +63,14 @@ public class ImageboardDAO {
 		sqlSession.close();
 
 		return totalA;
+	}
+
+	public ImageboardDTO getImageboard(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		ImageboardDTO imageboardDTO = sqlSession.selectOne("imageboardSQL.getImageboard", seq);
+        System.out.println("dao"+imageboardDTO.getImage1());
+		sqlSession.close();
+
+		return imageboardDTO;
 	}
 }
