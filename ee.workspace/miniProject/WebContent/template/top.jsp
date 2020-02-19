@@ -15,8 +15,8 @@
 	<a href="../board/boardWriteForm.do">글쓰기</a>&emsp;
 </c:if>
 	<a href="../board/boardList.do?pg=1">목록</a>&emsp;
-<c:if test="${sessionScope.memId ne null && memId eq 'admin' }">
-	<a href="">이미지등록</a><br>&emsp;
+<c:if test="${sessionScope.memId ne null && memId eq '111' }">
+	<a href="../imageboard/imageboardWriteForm.do">이미지등록</a>&emsp;
 </c:if>
 	<a href="">이미지목록</a><br>
 </div>

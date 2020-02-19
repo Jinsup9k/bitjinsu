@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
+import member.bean.MemberDTO;
 import member.dao.MemberDAO;
 
 public class CheckIdAction implements CommandProcess {
@@ -16,14 +17,14 @@ public class CheckIdAction implements CommandProcess {
 
 		// DB
 		MemberDAO memberDAO = MemberDAO.getInstance();
-		boolean exist = memberDAO.isExistId(id);
-
+		MemberDTO memberDTO = memberDAO.isExistId(id);
+		
 		// 응답
 		request.setAttribute("id", id);
-		if (exist) {
-			return "/member/checkIdFail.jsp";
-		} else {
+		if (memberDTO == null) {
 			return "/member/checkIdOk.jsp";
+		} else {
+			return "/member/checkIdFail.jsp";
 		}
 	}
 

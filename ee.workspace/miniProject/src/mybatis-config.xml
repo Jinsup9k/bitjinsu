@@ -5,6 +5,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias type="board.bean.BoardDTO" alias="boardDTO"/> 
+		<typeAlias type="member.bean.MemberDTO" alias="memberDTO"/> 
+		<typeAlias type="imageboard.bean.ImageboardDTO" alias="imageboardDTO"/> 
 	</typeAliases>
 
 	<environments default="development">
@@ -23,5 +25,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<mappers>
 		<mapper resource="board/dao/boardMapper.xml"/>
+		<mapper resource="member/dao/memberMapper.xml"/>
+		<mapper resource="imageboard/dao/imageboardMapper.xml"/>
 	</mappers>
 </configuration>

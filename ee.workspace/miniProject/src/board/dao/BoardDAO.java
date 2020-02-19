@@ -90,4 +90,27 @@ public class BoardDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
+
+	public void boardReply(Map<String, String> map) {		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		//원글
+		BoardDTO pDTO = getBoard(Integer.parseInt(map.get("pseq")));
+		
+		//글순서
+		sqlSession.update("boardSQL.boardReply1", pDTO);
+		
+		//답글쓰기
+		map.put("ref", pDTO.getRef()+"");
+		map.put("lev", pDTO.getLev()+1+"");
+		map.put("step", pDTO.getStep()+1+"");
+		sqlSession.insert("boardSQL.boardReply2", map);
+		
+		//답글수
+		sqlSession.update("boardSQL.boardReply3", pDTO);
+		
+		
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

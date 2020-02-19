@@ -18,7 +18,7 @@
 <form name="boardViewForm">
 <input type="hidden" name="seq" value="${boardDTO.seq }">
 <input type="hidden" name="pg" value="${pg }">
-<input type="hidden"  name="subject" value="${boarDTO.subject }">
+<input type="hidden"  name="subject" value="${boardDTO.subject }">
 <input type="hidden" name="content" value="${boardDTO.content }">
 
 <table  border="1" cellpadding="5" frame="hsides" rules="rows">
@@ -39,6 +39,7 @@
 	</tr>
 </table>
 <input type="button" value="목록" onclick="location.href='boardList.do?pg=${pg}'">
+<input type="button" value="답글" onclick="location.href='../board/boardReplyForm.do'">
 <c:if test="${memId eq boardDTO.id }">
 	<input type="button" value="글수정" onclick="mode(1)">
 	<input type="button" value="글삭제" onclick="mode(2)">
@@ -49,7 +50,7 @@
 function mode(num){
 	if(num==1){
 		document.boardViewForm.method = 'post';
-		document.boardViewForm.action = 'boardModifyForm.jsp';
+		document.boardViewForm.action = '../board/boardModifyForm.do';
 		document.boardViewForm.submit();
 		
 	}else if(num==2){

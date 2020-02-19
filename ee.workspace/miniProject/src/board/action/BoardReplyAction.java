@@ -11,19 +11,20 @@ import com.control.CommandProcess;
 
 import board.dao.BoardDAO;
 
-public class BoardWriteAction implements CommandProcess {
+public class BoardReplyAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		
-		//데이터
+		// 데이터
+		int pseq = Integer.parseInt(request.getParameter("pseq"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 
 		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("memId");
-		String name = (String)session.getAttribute("memName");
-		String email = (String)session.getAttribute("memEmail");
+		String id = (String) session.getAttribute("memId");
+		String name = (String) session.getAttribute("memName");
+		String email = (String) session.getAttribute("memEmail");
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);
@@ -31,13 +32,15 @@ public class BoardWriteAction implements CommandProcess {
 		map.put("email", email);
 		map.put("subject", subject);
 		map.put("content", content);
-		
-		//DB
+		map.put("pseq", pseq + "");
+
+		// DB
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.boardWrite(map);
+		boardDAO.boardReply(map);
+
 		//응답
-		
-		request.setAttribute("display", "/board/boardWrite.jsp");
+		request.setAttribute("pg", pg);
+		request.setAttribute("display", "/board/boardReply.jsp");
 		return "/main/index.jsp";
 	}
 

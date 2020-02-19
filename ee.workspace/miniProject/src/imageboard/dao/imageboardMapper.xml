@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="imageboardSQL">
+	<insert id="imageboardWrite" parameterType="imageboardDTO">
+		INSERT INTO
+		imageboard(seq,imageid,imagename,imageprice,imageqty,imagecontent,image1,logtime)
+		values(seq_imageboard.nextval, #{imageId}, #{imageName},
+		#{imagePrice}, #{imageQty}, #{imageContent}, #{image1}, sysdate)
+	</insert>
+
+	<select id="imageboardList" parameterType="java.util.Map"
+		resultType="imageboardDTO">
+		select * from (select rownum rn, tt.*
+		from (select * from imageboard order by seq desc)tt )
+		where rn<![CDATA[>=]]>#{startNum}
+		and rn<![CDATA[<=]]>#{endNum}
+	</select>
+	
+	<select id="getImageboardTotalA" resultType="int">
+		select count(*) from imageboard
+	</select>
+</mapper>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/mvcMember/member/checkId.do">
+<form action="../member/checkId.do?">
 	${requestScope.id }는(은) 사용 불가능<br><br>
 	아이디 <input type="text" name="id">
 	<input type="submit" value="중복체크">

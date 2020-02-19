@@ -1,26 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
 
-<jsp:useBean id="boardDAO" class="board.dao.BoardDAO"/>
-
-<%
-request.setCharacterEncoding("UTF-8");
-
-int seq = Integer.parseInt(request.getParameter("seq"));
-int pg = Integer.parseInt(request.getParameter("pg"));
-String subject = request.getParameter("subject");
-String content = request.getParameter("content");
-
-Map<String, String> map = new HashMap<String, String>();
-map.put("seq", seq+"");
-map.put("subject", subject);
-map.put("content", content);
-
-boardDAO.boardModify(map);
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +13,7 @@ boardDAO.boardModify(map);
 <script type="text/javascript">
 window.onload=function(){
 	alert("글수정 완료");
-	location.href='boardView.jsp?seq=<%=seq%>&pg=<%=pg%>';
+	location.href='../board/boardView.do?seq='+${seq}+'&pg='+${pg};
 }
 </script>
 </html>

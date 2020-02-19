@@ -9,7 +9,7 @@
 	
 	<select id="boardList" parameterType="java.util.Map" resultType="boardDTO">
 		select * from (select rownum rn, tt.* 
-						from (select * from board order by ref desc)tt )
+						from (select * from board order by ref desc, step asc)tt )
 						where rn<![CDATA[>=]]>#{startNum} and rn<![CDATA[<=]]>#{endNum}
 	</select>
 	
@@ -28,4 +28,22 @@
 	<update id="boardHit" parameterType="int">
 		UPDATE board SET hit=hit+1 WHERE seq=#{seq}
 	</update>	
+	
+	<!-- 답글쓰기 -->
+	
+	<update id="boardReply1" parameterMap="boardDTO">
+		update board set step= step+1 where ref=#{ref} and step>#{step}
+	</update>
+	
+	<insert id="boardReply2" parameterType="java.util.Map">
+		insert into board values(seq_board.nextval,#{id},
+								#{name},#{email},#{subject},#{subjcet},
+								#{content},#{ref},#{lev},#{step},
+								#{pseq},0,0,sysdate)
+	</insert>
+	
+	<update id="boardReply3" parameterMap="boardDTO">
+		update board set reply=reply+1 where seq=#{seq}
+	</update>
+	
 </mapper>
