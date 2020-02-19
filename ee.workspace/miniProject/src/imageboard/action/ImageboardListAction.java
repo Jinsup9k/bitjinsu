@@ -6,7 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import com.control.CommandProcess;
 
@@ -19,11 +19,10 @@ public class ImageboardListAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터
-		HttpSession session = request.getSession();
-		
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		request.setAttribute("pg", pg);
-		//db
+
+		//DB
 		int endNum = pg*3;
 		int startNum = endNum-2;
 		
@@ -39,7 +38,7 @@ public class ImageboardListAction implements CommandProcess {
 		int totalA = imageboardDAO.getBoardTotalA(); //총글수
 		imageboardPaging.setCurrentPage(pg);
 		imageboardPaging.setPageBlock(3);
-		imageboardPaging.setPageSize(5);
+		imageboardPaging.setPageSize(3);
 		imageboardPaging.setTotalA(totalA);
 		
 		StringBuffer paging = imageboardPaging.makePagingHTML();
