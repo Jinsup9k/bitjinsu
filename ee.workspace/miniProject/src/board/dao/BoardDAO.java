@@ -113,4 +113,12 @@ public class BoardDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
+
+	public void boardDelete(int seq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.selectOne("boardSQL.boardDelete", seq);
+		
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

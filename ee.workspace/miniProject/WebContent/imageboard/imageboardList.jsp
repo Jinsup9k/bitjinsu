@@ -3,9 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<form method="post" action="../imageboard/imageboardDelete.do">
 <table>
   <tr>
-    <th><input type="checkbox">번호</th>
+    <th><input type="checkbox" id="checkAll" onclick="checkAll()">번호</th>
     <th>이미지</th>
     <th>상품명</th>
     <th>단가</th>
@@ -14,7 +15,7 @@
   </tr>
   <c:forEach var="imageboardDTO" items="${list }">
   <tr>
-    <td align="center"><input type="checkbox">${imageboardDTO.seq }</td>
+    <td align="center"><input type="checkbox" name="check" value="${imageboardDTO.seq }">${imageboardDTO.seq }</td>
     <td align="center">
     	<a href="#" onclick="location.href='../imageboard/imageboardView.do?seq=${imageboardDTO.seq}&pg=${pg }'">
     		<img width="80" height="80" src="../storage/${imageboardDTO.image1 }">
@@ -35,6 +36,8 @@
   </tr>
   </c:forEach>
 </table>
-<input type="button" value="선택삭제">
+</form>
+<input type="button" value="선택삭제" onclick="deleteCheck()">
 <div  style="display:inline-block; width: 700px; text-align: center;">${paging }</div>
-   
+<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../js/board.js"></script>

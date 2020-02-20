@@ -28,30 +28,35 @@
 </head>
 <body>
 <table border="1" cellpadding="5" frame="hsides" rules="rows">
-	<th>글번호</th><!-- 가운데, 굵게 -->
-	<th>제목</th>
-	<th>작성자</th>
-	<th>작성일</th>
-	<th>조회수</th>
+	<tr>
+		<th>글번호</th><!-- 가운데, 굵게 -->
+		<th>제목</th>
+		<th>작성자</th>
+		<th>작성일</th>
+		<th>조회수</th>
+	<tr>
 <c:if test="${list ne null }">	
 	<c:forEach var="boardDTO" items="${list }">
 		<tr>
 			<td width="70" align="center">
-				${boardDTO.seq }
+				<c:if test="${boardDTO.pseq eq 0 }">
+					${boardDTO.seq }
+				</c:if>
 			</td>
 			<td width="300">
 				<a href="javascript:isLogin('${memId }',${boardDTO.seq },${pg })" id="subjectA">
 					
-					<c:forEach var="i" begin="1" end="${boarDTO.lev }">
+					<c:forEach var="i" begin="1" end="${boardDTO.lev }">
 						&emsp;
 					</c:forEach>
 					
-					<c:if test="${boardDTO.pseq != 0 } }">
+					<c:if test="${boardDTO.pseq ne 0 }">
 						<img src="../image/reply.gif">
 					</c:if>
-					${boardDTO.subject }
+						${boardDTO.subject }
 				</a>
 			</td>
+			
 			<td width="100" align="center">
 				${boardDTO.id }
 			</td>

@@ -1,0 +1,26 @@
+package imageboard.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.control.CommandProcess;
+
+public class ImageboardDeleteAction implements CommandProcess {
+
+	@Override
+	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+		//데이터
+		
+		
+		//DB
+		
+		
+		//응답
+		
+		
+		
+		request.setAttribute("display", "../imageboard/imageboardList.do?pg=1");
+		return "/main/index.jsp";
+	}
+
+}

@@ -43,7 +43,7 @@ public class ImageboardListAction implements CommandProcess {
 		
 		StringBuffer paging = imageboardPaging.makePagingHTML();
 		request.setAttribute("paging", paging);
-		
+		request.setCharacterEncoding("UTF-8");
 		request.setAttribute("list", list);
 		request.setAttribute("display", "/imageboard/imageboardList.jsp");
 		return "/main/index.jsp";		

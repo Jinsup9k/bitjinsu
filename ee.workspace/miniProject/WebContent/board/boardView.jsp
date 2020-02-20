@@ -55,7 +55,7 @@ function mode(num){
 		
 	}else if(num==2){
 		document.boardViewForm.method = 'post';
-		//document.boardViewForm.action = 'boardDelete.jsp';
+		document.boardViewForm.action = 'boardDelete.do';
 		document.boardViewForm.submit();
 	}
 }
