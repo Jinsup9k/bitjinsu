@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<form method="post" action="../imageboard/imageboardDelete.do">
+<form name="imageboardListForm" method="post" action="../imageboard/imageboardDelete.do">
 <table>
   <tr>
-    <th><input type="checkbox" id="checkAll" onclick="checkAll()">번호</th>
+    <th><input type="checkbox" id="checkAll"onclick="javascript:checkAll()">번호</th>
     <th>이미지</th>
     <th>상품명</th>
     <th>단가</th>
@@ -40,4 +40,4 @@
 <input type="button" value="선택삭제" onclick="deleteCheck()">
 <div  style="display:inline-block; width: 700px; text-align: center;">${paging }</div>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/board.js"></script>
+<script type="text/javascript" src="../js/board.js?ver=1"></script>
