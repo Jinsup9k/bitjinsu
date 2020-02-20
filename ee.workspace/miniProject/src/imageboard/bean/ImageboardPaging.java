@@ -20,17 +20,17 @@ public class ImageboardPaging {
 			endPage = totalP;
 		
 		if(startPage > pageBlock)
-			pagingHTML.append("[<a id='paging' href='imageboardList.do?pg="+(startPage-1)+"'>이전</a>]");
+			pagingHTML.append("[<span id='paging' onclick='imageboardPaging("+(startPage-1)+")'>이전</span>]");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i == currentPage)
-				pagingHTML.append("[<a id='currentPaging' href='imageboardList.do?pg="+i+"'>"+i+"</a>]");
+				pagingHTML.append("[<span id='currentPaging' onclick='imageboardPaging("+i+")'>"+i+"</span>]");
 			else 
-				pagingHTML.append("[<a id='paging' href='imageboardList.do?pg="+i+"'>"+i+"</a>]");
+				pagingHTML.append("[<span id='paging' onclick='imageboardPaging("+i+")'>"+i+"</span>]");
 		}
 		
 		if(endPage < totalP)
-			pagingHTML.append("[<a id='paging' href='imageboardList.do?pg="+(endPage+1)+"'>다음</a>]");
+			pagingHTML.append("[<span id='paging' onclick='imageboardPaging("+(endPage+1)+")'>다음</span>]");
 		return pagingHTML;
 	}
 

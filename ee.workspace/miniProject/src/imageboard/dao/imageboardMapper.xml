@@ -24,4 +24,16 @@
 	<select id="getImageboard" parameterType="int" resultType="imageboardDTO">
 		select * from imageboard where seq=#{seq}
 	</select>
+	
+	<delete id="imageboardDelete" parameterType="int">
+		delete imageboard where seq=#{seq}
+	</delete>
+	
+	<delete id="imageboardDelete2" parameterType="java.util.Map">
+		delete imageboard where seq in
+		<foreach collection="array" item="item" index="i" separator="," open="(" close=")">
+			#{item}
+			<!--${array[i]}  -->
+		</foreach>
+	</delete>
 </mapper>

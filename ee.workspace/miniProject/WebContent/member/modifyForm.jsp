@@ -1,35 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="member.bean.MemberDTO" %>
-
-<jsp:useBean id="memberDAO" class="member.dao.MemberDAO" />
-
-<%
-//데이터
-String id = (String)session.getAttribute("memId");
-
-//DB
-MemberDTO memberDTO = memberDAO.getMember(id);
-%>    
 
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <title>modify</title>
 </head>
 <body>
-<form name="modifyForm" method="post" action="modify.jsp">
+<form name="modifyForm" method="post" action="../member/modify.do">
       <table border="1" cellspacing="0" cellpadding="3">
         <tr>
           <td class=key>이름</td>
-          <td><input type="text" name="name" value="<%=memberDTO.getName()%>"size="10"/></td>
+          <td><input type="text" name="name" value="${memberDTO.name}"size="10"/></td>
         </tr>
         <tr>
           <td class=key>아이디</td>
           <td>
-            <input type="text" name="id" value="<%=id%>" size="25" readonly />
+            <input type="text" name="id" value="${memberDTO.id }" size="25" readonly />
           </td>
         </tr>
         <tr>
@@ -50,7 +38,7 @@ MemberDTO memberDTO = memberDAO.getMember(id);
         <tr>
           <td class=key>이메일</td>
           <td>
-            <input type="text" name="email1"  value="<%=memberDTO.getEmail1() %>">@
+            <input type="text" name="email1"  value="${memberDTO.email1 }">@
             <input type="text" name="email2" list="email2" placeholder="직접입력"/>
             <datalist id="email2">
               <option value="gmail.com"/>
@@ -68,19 +56,19 @@ MemberDTO memberDTO = memberDAO.getMember(id);
                <option value="017">017</option>
                <option value="019">019</option>
              </select>
-             <input type="tel" name="tel2" size="4" value="<%=memberDTO.getTel2() %>"/>
-             <input type="tel" name="tel3" size="4" value="<%=memberDTO.getTel3() %>"/>
+             <input type="tel" name="tel2" size="4" value="${memberDTO.tel2 }"/>
+             <input type="tel" name="tel3" size="4" value="${memberDTO.tel3 }"/>
            </td>
          </tr>
          <tr>
            <td class=key>주소</td>
            <td>
-             <input type="text" name="zipcode" id="zipcode" size="6" readonly value="<%=memberDTO.getZipcode() %>">
+             <input type="text" name="zipcode" id="zipcode" size="6" readonly value="${memberDTO.zipcode }">
              <input type="button" value="우편번호검색" onclick="checkPost()"/>
              <br>
-             <input type="text" name="addr1" id="addr1" size="50" placeholder="주소" value="<%=memberDTO.getAddr1() %>" readonly/>
+             <input type="text" name="addr1" id="addr1" size="50" placeholder="주소" value="${memberDTO.addr1 }" readonly/>
              <br>
-             <input type="text" name="addr2" id="addr2" size="50" placeholder="상세 주소" value="<%=memberDTO.getAddr2() %>"/>
+             <input type="text" name="addr2" id="addr2" size="50" placeholder="상세 주소" value="${memberDTO.addr2 }"/>
            </td>
          </tr>
          <tr>
@@ -95,11 +83,11 @@ MemberDTO memberDTO = memberDAO.getMember(id);
 <script type="text/javascript" src="../js/member.js"></script>
 <script type = "text/javascript">
 window.onload=function(){
-	document.modifyForm.gender['<%=memberDTO.getGender()%>'].checked = true;
-	document.modifyForm.email2.value = '<%=memberDTO.getEmail2() %>';
+	document.modifyForm.gender['${Integer.parseInt(memberDTO.gender)}'].checked = true;
+	document.modifyForm.email2.value = '${memberDTO.email2}';
 
-	//document.modifyForm.tel1.value = '<%=memberDTO.getTel1() %>';
-	document.getElementById('tel1').value = '<%=memberDTO.getTel1() %>';
+	//document.modifyForm.tel1.value = '${memberDTO.tel1}';
+	document.getElementById('tel1').value = '${memberDTO.tel1}';
 }
 </script>
 </html>

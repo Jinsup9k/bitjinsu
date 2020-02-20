@@ -20,7 +20,6 @@ public class ImageboardListAction implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		request.setAttribute("pg", pg);
 
 		//DB
 		int endNum = pg*3;
@@ -40,10 +39,11 @@ public class ImageboardListAction implements CommandProcess {
 		imageboardPaging.setPageBlock(3);
 		imageboardPaging.setPageSize(3);
 		imageboardPaging.setTotalA(totalA);
-		
 		StringBuffer paging = imageboardPaging.makePagingHTML();
-		request.setAttribute("paging", paging);
+		
 		request.setCharacterEncoding("UTF-8");
+		request.setAttribute("pg", pg);
+		request.setAttribute("paging", paging);
 		request.setAttribute("list", list);
 		request.setAttribute("display", "/imageboard/imageboardList.jsp");
 		return "/main/index.jsp";		

@@ -2,11 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style type="text/css">
+#currentPaging{
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+#paging{
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
 
+</style>
 <form name="imageboardListForm" method="post" action="../imageboard/imageboardDelete.do">
 <table>
   <tr>
-    <th><input type="checkbox" id="checkAll"onclick="javascript:checkAll()">번호</th>
+    <th><input type="checkbox" id="checkAll" onclick="checkAll2()">번호</th>
     <th>이미지</th>
     <th>상품명</th>
     <th>단가</th>
@@ -37,7 +49,11 @@
   </c:forEach>
 </table>
 </form>
-<input type="button" value="선택삭제" onclick="deleteCheck()">
-<div  style="display:inline-block; width: 700px; text-align: center;">${paging }</div>
+<div style="float: left;">
+	<input type="button" value="선택삭제" onclick="deleteCheck()">
+</div>
+<div style="float: left;  text-align: center; width: 300px;">
+	${paging }
+</div>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/board.js?ver=1"></script>
+<script type="text/javascript" src="../js/board.js"></script>

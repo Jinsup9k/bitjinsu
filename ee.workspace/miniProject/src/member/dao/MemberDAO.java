@@ -96,7 +96,7 @@ public class MemberDAO {
 
 	public void modify(MemberDTO memberDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.update("memberSQL.modify");
+		sqlSession.update("memberSQL.modify",memberDTO);
 		sqlSession.commit();
 		sqlSession.close();
 

@@ -1,17 +1,3 @@
-function checkAll(){
-	let check = document.getElementsByName("check");
-	if(document.getElementById("checkAll").checked){
-		for(i=0; i<check.length; i++){
-			check[i].checked = true;
-		}
-	}else{
-		for(i=0; i<check.length.length; i++){
-			check[i].checked = false;
-		}
-	}
-	
-}
-
 function deleteCheck(){
 	let check = document.getElementsByName("check");
 	let count=0;
@@ -43,9 +29,21 @@ $('#boardFormBtn').click(
 				document.forms[0].submit();
 		});
 
+function checkAll2(){
+	let check = document.getElementsByName("check");
+	if(document.getElementById("checkAll").checked){
+		for(i=0; i<check.length; i++){
+			check[i].checked = true;
+		}
+	}else{
+		for(i=0; i<check.length; i++){
+			check[i].checked = false;
+		}
+	} 
+}
 
-
-
-
+function imageboardPaging(pg){
+	location.href="imageboardList.do?pg="+pg;
+}
 
 	
